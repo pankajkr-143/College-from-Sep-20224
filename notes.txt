@@ -1,0 +1,92 @@
+Tomorrow test:
+1. Java fundamental
+2. types of java appl.
+3. feature of java 
+4. diff b/w C++ and Java
+5. diff b/w JDK/JVM/JRE
+------------------------------------------------------------------------------------------
+
+
+Get an input String from user and parse it to integer, if it is not a number it will throw number format exception catch it and print "Enter inut is not vadid format for an integer", or else print the square of that number  
+
+import java.util.Scanner;
+
+public class ParseIntegerExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        String input = scanner.nextLine();
+
+        try {
+            int number = Integer.parseInt(input);  // Parse input to integer
+            System.out.println("Square of " + number + " is: " + (number * number));
+        } catch (NumberFormatException e) {
+            System.out.println("Entered input is not a valid format for an integer.");
+        }
+    }
+}    
+------------------------------------------------------------------------------------------
+
+
+wap that takes as input the size of the array and the element in the array.
+the program then ask the user to enter a particular index and prints the element at that index.
+This program may generate array index out of bounds exception.
+In the catch block, print the class name of the catch exception thrown.
+
+(// Try to access the array element and handle ArrayIndexOutOfBoundsException)
+
+------------------------------------------------------------------------------------------
+
+Q. Find the minimum distance between the given two wprds
+Given a list of words in the list of words following by two words, the task is to find the minimum distance between the given two words in the list of words
+input s={"the", "quick", "brown", "fox," "quick"}, word1="the",,word2="fox"
+output: 3 
+
+
+
+
+
+Q. Longest common prefix using sorting 
+Given an array of Strings strs[]. The task is to return the longest common prefix among each and every Strings present in the array. If there's no prefix common in all the Strings"-1".
+Input : strs[]=["geeksforgeeks", "geeks", "geek", "geezer"]
+output: geek
+
+Input : strs[]=["Hello", "world"]
+output: -1
+
+
+import java.util.Arrays;
+
+public class longCommPre {
+
+    public static String findLongCommPre(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "-1"; // Return -1 if the array is empty
+        }
+
+        // Sort the array
+        Arrays.sort(strs);
+
+        // Compare the first and last strings after sorting
+        String first = strs[0];
+        String last = strs[strs.length - 1];
+        int minLength = Math.min(first.length(), last.length());
+
+        // Find the common prefix between the first and last string
+        int i = 0;
+        while (i < minLength && first.charAt(i) == last.charAt(i)) {
+            i++;
+        }
+
+        String commonPrefix = first.substring(0, i);
+
+        return commonPrefix.isEmpty() ? "-1" : commonPrefix; // Return -1 if no common prefix
+    }
+
+    public static void main(String[] args) {
+        String[] strs = {"geeksforgeeks", "geeks", "geek", "geezer"};
+        
+        String result = findLongCommPre(strs);
+        System.out.println("Longest Common Prefix: " + result);
+    }
+}
